@@ -1609,6 +1609,8 @@ MonoBehaviour:
   shootingButton: 67108864
   rayPrefab: {fileID: 8006732253794018515, guid: 1bd872ebefbc443388c07dbca34c5a7b,
     type: 3}
+  hitEffectPrefab: {fileID: 792097109318868271, guid: b00a6bd7498334c31b4d5ceecf38fdbb,
+    type: 3}
   raySpawnPoint: {fileID: 792810255}
   maxDistance: 5
   lineShowDuration: 0.3

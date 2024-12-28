@@ -9,6 +9,7 @@ public class RayGun : MonoBehaviour
     public LayerMask layerMask;
     public OVRInput.RawButton shootingButton;
     public LineRenderer rayPrefab;
+    public GameObject hitEffectPrefab;
     public Transform raySpawnPoint;
     public float maxDistance = 5f;
 
@@ -32,7 +33,7 @@ public class RayGun : MonoBehaviour
     public void Shoot()
     {
         audioSource.PlayOneShot(shootingSound);
-        
+
         Ray ray = new Ray(raySpawnPoint.position, raySpawnPoint.forward);
 
         bool hasHit = Physics.Raycast(ray, out RaycastHit hit, maxDistance, layerMask);
@@ -41,6 +42,8 @@ public class RayGun : MonoBehaviour
         if (hasHit)
         {
             endPoint = hit.point;
+            GameObject hitEffect = Instantiate(hitEffectPrefab, endPoint, Quaternion.LookRotation(-hit.normal));
+            Destroy(hitEffect, 1f);
         } else
         {
             endPoint = ray.origin + ray.direction * maxDistance;
